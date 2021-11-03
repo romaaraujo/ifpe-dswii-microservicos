@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+
+    app_calc:
+        build: app_calc
+    app_mult:
+        build: app_mult
+    app_soma:
+        build: app_soma
+    app_sub:
+        build: app_sub
+
+    nginx:
+        image: nginx:alpine
+        container_name: nginx
+        build: nginx
+        ports:
+            - 80:80
+        depends_on:
+           - app_calc
+           - app_mult
+           - app_soma
+           - app_sub
